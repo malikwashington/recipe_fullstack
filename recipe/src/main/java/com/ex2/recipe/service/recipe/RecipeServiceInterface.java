@@ -41,14 +41,14 @@ public interface RecipeServiceInterface {
     }
 
     static Recipe updateRecipe(Recipe existingRecipe, RecipeUpdateRequest request){
-        existingRecipe.setTitle(createRequest.getTitle());
-        existingRecipe.setCuisine(createRequest.getCuisine());
-        existingRecipe.setCategory(createRequest.getCategory());
-        existingRecipe.setInstruction(createRequest.getInstruction());
-        existingRecipe.setDescription(createRequest.getDescription());
-        existingRecipe.setPrepTime(createRequest.getPrepTime());
-        existingRecipe.setCookTime(createRequest.getCookTime());
-        existingRecipe.setIngredients(createRequest.getIngredients());
+        existingRecipe.setTitle(request.getTitle());
+        existingRecipe.setCuisine(request.getCuisine());
+        existingRecipe.setCategory(request.getCategory());
+        existingRecipe.setInstruction(request.getInstruction());
+        existingRecipe.setDescription(request.getDescription());
+        existingRecipe.setPrepTime(request.getPrepTime());
+        existingRecipe.setCookTime(request.getCookTime());
+        existingRecipe.setIngredients(request.getIngredients());
 
         return existingRecipe;
     }

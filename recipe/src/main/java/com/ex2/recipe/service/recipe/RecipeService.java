@@ -1,8 +1,12 @@
 package com.ex2.recipe.service.recipe;
 
+import com.ex2.recipe.dto.ImageDto;
 import com.ex2.recipe.dto.RecipeDto;
+import com.ex2.recipe.dto.ReviewDto;
+import com.ex2.recipe.dto.UserDto;
 import com.ex2.recipe.model.Recipe;
 import com.ex2.recipe.model.User;
+import com.ex2.recipe.model.Image;
 import com.ex2.recipe.repository.ImageRepository;
 import com.ex2.recipe.repository.RecipeRepository;
 import com.ex2.recipe.repository.ReviewRepository;
@@ -11,6 +15,7 @@ import com.ex2.recipe.request.CreateRecipeRequest;
 import com.ex2.recipe.request.RecipeUpdateRequest;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -63,7 +68,7 @@ public class RecipeService implements RecipeServiceInterface {
 
     @Override
     public Recipe getRecipeById(Long id) {
-        return recipeRepository.findById()
+        return recipeRepository.findById(id)
                 .orElseThrow(()-> new EntityNotFoundException("Recipe not found."));
     }
 
@@ -92,5 +97,24 @@ public class RecipeService implements RecipeServiceInterface {
     @Override
     public List<RecipeDto> getConvertedRecipes(List<Recipe> recipes) {
         return recipes.stream().map(this::convertToDto).toList();
+    }
+
+    @Override
+    public RecipeDto convertToDto(Recipe recipe) {
+        RecipeDto recipeDto = modelMapper.map(recipe, RecipeDto.class);
+        UserDto userDto = modelMapper.map(recipe.getUser(), UserDto.class);
+        Optional<Image> image = Optional.ofNullable(imageRepository.findByRecipeId(recipe.getId()));
+        image.map(img-> modelMapper.map(img, ImageDto.class))
+            .ifPresent(recipeDto::setImageDto);
+        List<ReviewDto> reviews = reviewRepository.findAllByRecipeId(recipe.getId())
+                .stream().map(review-> modelMapper.map(review, ReviewDto.class)).toList();
+
+        recipeDto.setTotalRateCount(recipe.getTotalRateCount());
+        recipeDto.setAverageRating(recipe.getAverageRating());
+
+        recipeDto.setTotalRateCount(recipe.getTotalRateCount());
+        recipeDto.setAverageRating(recipe.getAverageRating());
+
+        return recipeDto;
     }
 }
