@@ -24,10 +24,6 @@ public class Review {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 }

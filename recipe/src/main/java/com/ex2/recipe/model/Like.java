@@ -24,5 +24,5 @@ public class Like {
         this.recipe = recipe;
     }
 
-    private User user;
+    // private User user;
 }
