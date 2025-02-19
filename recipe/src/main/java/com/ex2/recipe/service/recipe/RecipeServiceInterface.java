@@ -25,6 +25,7 @@ public interface RecipeServiceInterface {
     Set<String> getAllRecipeCuisine();
 
     static Recipe createRecipe(CreateRecipeRequest request, User user){
+        System.out.println("\n\n\n\n\n\n\n" + user.getUsername() + "\n" + request.toString() + "\n\n\n\n\n\n\n");
         Recipe recipe = new Recipe();
         Recipe createRequest = request.getRecipe();
         recipe.setTitle(createRequest.getTitle());
