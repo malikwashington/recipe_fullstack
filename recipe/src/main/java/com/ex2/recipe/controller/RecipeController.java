@@ -21,7 +21,8 @@ public class RecipeController {
     @PostMapping
     public ResponseEntity<RecipeDto> createRecipe(@RequestBody CreateRecipeRequest request) {
         Recipe recipe = recipeService.createRecipe(request);
-        System.out.println("\n\n\nthe recipe is: " + recipe.toString() + "\n\n\n");
+        System.out.println("\n\n\nthe recipe is: " + request.getRecipe() + "\n\n\n");
+        System.out.println("\n\n\nthe user is: " + request.getUser() + "\n\n\n");
         return ResponseEntity.ok(recipeService.convertToDto(recipe));
     }
 
