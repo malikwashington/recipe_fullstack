@@ -54,4 +54,6 @@ public interface RecipeServiceInterface {
     }
 
     List<RecipeDto> getConvertedRecipes(List<Recipe> recipes);
+
+    RecipeDto convertToDto(Recipe recipe);
 }
