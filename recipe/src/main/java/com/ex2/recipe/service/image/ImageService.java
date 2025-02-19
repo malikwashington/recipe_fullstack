@@ -1,5 +1,6 @@
 package com.ex2.recipe.service.image;
 
+import com.ex2.recipe.dto.ImageDto;
 import com.ex2.recipe.model.Image;
 import com.ex2.recipe.repository.ImageRepository;
 import com.ex2.recipe.service.recipe.RecipeServiceInterface;
@@ -27,5 +28,10 @@ public class ImageService implements ImageServiceInterface {
     @Override
     public void updateImage(MultipartFile file, Long imageId) {
 
+    }
+
+    @Override
+    public ImageDto saveImage(Long recipeId, MultipartFile file) {
+        return null;
     }
 }
