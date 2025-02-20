@@ -3,6 +3,7 @@ import { Navbar, Nav } from "react-bootstrap";
 
 const Header = () => {
   return (
+    // navbar boilerplate code from bootstrap website
     <Navbar expand="lg" className="navbar mt-2">
       <Navbar.Brand
         className="logo"
@@ -16,7 +17,7 @@ const Header = () => {
       <Navbar.Collapse>
         <Nav className="me-5">
           <a href="/aboutus" className="nav-links">
-            What We Do At Smorgasbourg
+            What We Do At Smorgasbord
           </a>
         </Nav>
         <Nav className="me-5">
