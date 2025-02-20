@@ -11,17 +11,14 @@ const images = [cover1, cover2, cover3, cover4, cover5];
 
 const HeroImageSlider = () => {
   const settings = {
-    duration: 1000,
+    duration: 10000,
     transitionDuration: 500,
     infinite: true,
-    arrows: true,
-    pauseOnHover: true,
-    pauseOnFocus: false,
-    scale: 1,
+    indicators: true,
+    arrows: false,
     autoplay: true,
-    easing: "ease-in-out",
-    transitionTimingFunction: "cubic-bezier(0.214,0.610, 0.355, 1.000)",
   };
+
   return (
     <div className="slide-container">
       <Fade {...settings}>
