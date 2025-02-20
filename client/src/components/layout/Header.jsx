@@ -15,7 +15,7 @@ const Header = () => {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <Nav className="me-5">
+        <Nav className="me-auto">
           <a href="/aboutus" className="nav-links">
             What We Do At Smorgasbord
           </a>
