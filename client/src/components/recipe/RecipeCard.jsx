@@ -1,7 +1,8 @@
 import React from "react";
 import { Col, Row, Card } from "react-bootstrap";
 import RatingStars from "../common/RatingStars";
-import { ImageDownloader, PreparationDetails } from "../common";
+import ImageDownloader from '../image/ImageDownloader'
+import PreparationDetails from "../common/PreparationDetails";
 import { Link } from "react-router-dom";
 import Like from "../common/Like";
 
@@ -40,7 +41,17 @@ const RecipeCard = ({ recipe }) => {
               prepTime={recipe.prepTime}
               cookTime={recipe.cookTime}
               category={recipe.category}
-            />
+            {filteredRecipes && filteredRecipes.length > 0 ? (
+              filteredRecipes.map((recipe) => (
+                <Col key={recipe.id} md={4} lg={3} sm={12} xs={12}>
+                  <RecipeCard recipe={recipe} />
+                </Col>
+              ))
+            ) : (
+              <div className='text-danger mb-4'>
+                No recipes found at this time , please check again later!
+              </div>
+            )}/>
           </Card.Body>
 
           <Link
