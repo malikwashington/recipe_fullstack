@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Route,
+  Router,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements
@@ -12,11 +13,7 @@ function App() {
     <Route path="/" element={<RootLayout />} />
   ));
 
-  return (
-    <>
-    <h2>It's A Smorgasborg</h2>
-    </>
-  )
+  return <RouterProvider router={router}/>
 }
 
 export default App
