@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { FaThumbsUp } from "react-icons/fa";
 import { Card } from "react-bootstrap";
+import { getRecipeById, likeRecipe, unlikeRecipe } from "../services/Service";
 
 const Like = ({ recipeId }) => {
   const [likes, setLikes] = useState(0);
